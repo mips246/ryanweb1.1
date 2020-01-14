@@ -8,14 +8,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<base href="<%=basePath%>">
 	<meta charset="UTF-8">
-	<title>计算机系统设计实验平台</title>
+	<title>同济大学计算机系统设计实验平台</title>
 	<link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
 	<link rel="stylesheet" href="css/main.css">
   	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  	
+  	<!-- 新增 -->
+  	<link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+  	
   	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   	<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <title>同济大学计算机实验平台</title>
+	
 	<script language="javascript">
   		function validate(f){
     		if(!(/^\w{5,15}$/.test(f.userid.value))){
@@ -44,32 +51,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
     </script>
 </head>
-<body>
+
+<body class="gray-bg">
 <%
 	request.setCharacterEncoding("GBK");
 %>
-<div class="container clearf">
-  <div class="container clearf">
-    <div class="top-nav clearf">
-      <div class="fl">
-        <div class="item">
-          <a href="main.jsp"><button type="button" class="btn btn-primary ">首页</button></a>
-        </div>
-        <div class="item">
-          <button type="button" class="btn btn-primary">联系我们</button>
-        </div>
-
-      </div>
-      <div class="fr">
-        <div class="item">
-          <button type="button" class="btn btn-primary ">登陆</button>
-        </div>
-        <div class="item">
-          <button type="button" class="btn btn-primary ">注册</button>
-        </div>
-      </div>
-  </div>
-</div>
 <%
  	List<String>info=(List<String>)request.getAttribute("info");
  	if(info!=null){
@@ -81,26 +67,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	}
 %>
-	<div class="inputstyle">
-		<form action='LoginServletNew' method='post' onsubmit="return validate(this)">
-			<div class="col-5 inputbutton" align="center">
-		        <input type='text' class="form_input" placeholder="Enter your account" name='userid' value=''/><br/>
-			    <input type='password' class="form_input" placeholder="Enter your password" name='userpass' value=''/><br/>
-			    <input type='submit' value='登录'/>  <br/>
-			</div>
-			<div class="col-5" align="center">
-			    <input type="radio" name="role" value="student" checked="checked">学生
-	            <input type="radio" name="role" value="teacher">教师
-	            <input type="radio" name="role" value="admin">管理员
-			</div>
-		</form>
-	</div>
-
-
-	<div class="footer clearf">
-		<div class="container">
-			<p align="center">同济大学国家计算机实验示范中心</p>
+	<div class="middle-box text-center loginscreen  animated fadeInDown">
+		<div>
+			<div>
+                <h1 class="logo-name">CS</h1>
+            </div>
+            <h3>同济大学计算机系统设计实验平台</h3>
+			<form action='LoginServletNew' method='post' onsubmit="return validate(this)">
+				<div class="form-group">
+				    <input type="radio" name="role" value="student" checked="checked">学生
+		            <input type="radio" name="role" value="teacher">教师
+		            <input type="radio" name="role" value="admin">管理员
+				</div>
+				<div class="form-group">
+			        <input type='text' class="form-control" placeholder="Enter your account" name='userid' value=''/>
+				</div>
+				<div class="form-group">
+				    <input type='password' class="form-control" placeholder="Enter your password" name='userpass' value=''/>
+				</div>
+				<input type='submit' class="btn btn-primary block full-width m-b" value='登录'/>
+			</form>
 		</div>
 	</div>
+
 </body>
 </html>
