@@ -67,25 +67,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	}
 %>
-	<div class="middle-box text-center loginscreen  animated fadeInDown">
+	<div class="text-center animated fadeInDown">
 		<div>
 			<div>
-                <h1 class="logo-name">CS</h1>
+                <h1 class="logo-name">MIPS246</h1>
             </div>
             <h3>同济大学计算机系统设计实验平台</h3>
 			<form action='LoginServletNew' method='post' onsubmit="return validate(this)">
-				<div class="form-group">
-				    <input type="radio" name="role" value="student" checked="checked">学生
-		            <input type="radio" name="role" value="teacher">教师
-		            <input type="radio" name="role" value="admin">管理员
+				<div class="middle-box">
+			
+					<div class="form-group">
+					    <input type="radio" name="role" value="student" checked="checked">学生
+			            <input type="radio" name="role" value="teacher">教师
+			            <input type="radio" name="role" value="admin">管理员
+					</div>
+					
+					<div class="form-group">
+				        <input type='text' class="form-control" placeholder="Enter your account" name='userid' value=''/>
+					</div>
+					
+					<div class="form-group">
+					    <input type='password' class="form-control" placeholder="Enter your password" name='userpass' value=''/>
+					</div>
+					
+					<div class="form-group">
+						<input type='submit' class="btn btn-primary block full-width m-b" value='登录'/>
+					</div>
+				
 				</div>
-				<div class="form-group">
-			        <input type='text' class="form-control" placeholder="Enter your account" name='userid' value=''/>
-				</div>
-				<div class="form-group">
-				    <input type='password' class="form-control" placeholder="Enter your password" name='userpass' value=''/>
-				</div>
-				<input type='submit' class="btn btn-primary block full-width m-b" value='登录'/>
 			</form>
 		</div>
 	</div>
