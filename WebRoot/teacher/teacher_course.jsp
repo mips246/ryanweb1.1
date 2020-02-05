@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%-- <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,5 +103,112 @@
 
         </div>
     </div>
+</body>
+</html> --%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<link href="../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+    
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>课程管理</title>
+    
+    <script type="text/javascript">
+        function loadInfoTable(){
+        	var teacherid = '<%=session.getAttribute("userid")%>';
+            $.ajax({
+                url:"/MIPS246/AdminTeacherCourseServlet",
+                type:"POST",
+                data:{
+                    method:"selectTheTeacherCourse",
+                    teacherid:teacherid
+                },
+                dataType:"json",
+                success:function(data){
+                    $.each(data, function (index) {
+                        var courseid = data[index].courseid;
+                        var coursename = data[index].coursename;
+
+                        tt = "<tr>"
+                            +"<td class='text-center'>"+courseid+"</td>"
+                            +"<td class='text-center'>"+coursename+"</td>"
+                            +'<td class="text-center"><button onclick="manageCourse(\''+courseid+'\')" class="btn btn-primary btn-sm demo4">管理课程</button></td>'
+                            +'<td class="text-center"><button onclick="manageStudent(\''+courseid+'\')" class="btn btn-primary btn-sm demo4">管理学生</button></td>'
+                            +"</tr>";
+                        $("#insertPlace").append(tt);
+                    });
+                }
+            });
+        }
+    </script>
+    
+    <script type="text/javascript">
+    	function manageCourse(courseid){
+    		var url = "teacher_course_manage.jsp?courseid=" + courseid;
+    		window.location.href=url;
+    		//window.open(url);
+    	}
+    </script>
+    
+    <script type="text/javascript">
+    	function manageStudent(courseid){
+    		var url = "teacher_student_manage.jsp?courseid=" + courseid;
+    		window.location.href=url;
+    		//window.open(url);
+    	}
+    </script>
+    
+</head>
+<body class="gray-bg" onload="loadInfoTable()">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+                        <h3>课程管理</h3>
+                        <div class="ibox-tools">
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                    	<div class="table-responsive" class="row">
+                    		<div class="col-sm-12">
+								<table class="table table-striped" class="text-center">
+						            <thead>
+						            <tr>
+						                <th class="text-center">课程号</th>
+						                <th class="text-center">课程名</th>
+						                <th></th>
+						                <th></th>
+						            </tr>
+						            </thead>
+						
+						            <tbody id="insertPlace">
+						            </tbody>
+						        </table>
+					        </div>
+				        </div>
+			        </div>
+		        </div>
+			</div>
+        </div>
+    </div>
+    
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="../js/content.min.js?v=1.0.0"></script>
+    <script src="../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../js/plugins/validate/messages_zh.min.js"></script>
+    <script src="../js/demo/form-validate-demo.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
 </html>
