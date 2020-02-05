@@ -121,7 +121,7 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>课程管理</title>
+    <title>课程管理主页</title>
     
     <script type="text/javascript">
         function loadInfoTable(){
@@ -142,8 +142,8 @@
                         tt = "<tr>"
                             +"<td class='text-center'>"+courseid+"</td>"
                             +"<td class='text-center'>"+coursename+"</td>"
-                            +'<td class="text-center"><button onclick="manageCourse(\''+courseid+'\')" class="btn btn-primary btn-sm demo4">管理课程</button></td>'
-                            +'<td class="text-center"><button onclick="manageStudent(\''+courseid+'\')" class="btn btn-primary btn-sm demo4">管理学生</button></td>'
+                            +'<td class="text-center"><button onclick="manageCourse(\''+courseid+'\')" class="btn btn-primary demo4">管理课程</button></td>'
+                            +'<td class="text-center"><button onclick="manageStudent(\''+courseid+'\')" class="btn btn-primary demo4">管理学生</button></td>'
                             +"</tr>";
                         $("#insertPlace").append(tt);
                     });
