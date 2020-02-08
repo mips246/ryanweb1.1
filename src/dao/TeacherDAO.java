@@ -147,4 +147,23 @@ public class TeacherDAO extends BaseDAO{
 		return courselist;
 	}
 	
+	//通过教师id取出该教师所有课程(name+no)
+	public static JSONArray getCourseForTeacher(String teacherid) throws SQLException, JSONException {
+		JSONArray resultlist = new JSONArray();
+    	String sql = "select courseid,coursename from courseteacher where teacherid = ?;";
+    	openConnection();
+		pstmt = getPStatement(sql);
+		
+		pstmt.setString(1, teacherid);
+		ResultSet result = pstmt.executeQuery();
+		while(result.next()){
+			JSONObject obj= new JSONObject ();
+			obj.put("courseid", result.getString("courseid"));
+			obj.put("coursename", result.getString("coursename"));
+			resultlist.put(obj);
+		}
+		result.close();
+		closeConnect();
+		return resultlist;
+	}
 }

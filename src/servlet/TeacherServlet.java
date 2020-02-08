@@ -91,6 +91,18 @@ public class TeacherServlet extends HttpServlet {
 			out.println(jsonArray);
 			
 		}
+		else if("selectAllCourseForTeacher".equals(method)) {
+			System.out.println("< Teacher Load Course Name And Course No >");
+			String teacherid = request.getParameter("teacherid");
+			
+			try{
+				jsonArray = TeacherDAO.getCourseForTeacher(teacherid);
+			}catch(SQLException|JSONException e) {
+				e.printStackTrace();
+			}
+			out.println(jsonArray);
+			
+		}
 		else if("updateGrade".equals(method)) {
 			System.out.println("< Teacher Update Grade >");
 			String teacherid = request.getParameter("teacherid");

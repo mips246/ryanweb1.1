@@ -53,7 +53,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>主页</title>
+		<title>MIPS246 教师登录</title>
 
 	    <link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
 	    <link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
@@ -83,7 +83,7 @@
 	                    </li>
 	                    <li>
                     		<a class="J_menuItem" href="updatepw.jsp">
-                    		<i class="fa fa-home"></i>
+                    		<i class="fa fa-key"></i>
                     		<span class="nav-label">修改密码</span>
                     		</a>
 		                </li>
@@ -92,6 +92,21 @@
 		                    <i class="fa fa-home"></i>
 		                    <span class="nav-label">课程管理</span>
 		                    </a>
+		                </li>
+		                <li>
+		                	<a href="#">
+		                		<i class="fa fa fa-bar-chart-o"></i>
+		                		<span class="nav-label">学生管理</span>
+		                		<span class="fa arrow"></span>
+		                	</a>
+		                	<ul class="nav nav-second-level">
+		                		<li>
+		                			<a class="J_menuItem" href="teacher_submit_grade.jsp">提交学生课程成绩</a>
+		                		</li>
+		                		<li>
+		                			<a class="J_menuItem" href="admin_add_student.jsp">查看学生作业</a>
+		                		</li>
+		                	</ul>
 		                </li>
 		                <%-- <li>
 		                    <a class="J_menuItem" href="teacher_submit_grade.jsp?u_number=${u_number }">
