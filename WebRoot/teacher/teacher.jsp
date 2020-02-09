@@ -88,10 +88,19 @@
                     		</a>
 		                </li>
 		                <li>
-		                    <a class="J_menuItem" href="teacher_course.jsp">
-		                    <i class="fa fa-home"></i>
-		                    <span class="nav-label">课程管理</span>
+		                    <a href="#">
+		                    	<i class="fa fa-home"></i>
+		                    	<span class="nav-label">课程管理</span>
+		                    	<span class="fa arrow"></span>
 		                    </a>
+		                    <ul class="nav nav-second-level">
+		                		<li>
+		                			<a class="J_menuItem" href="teacher_course.jsp">查看我的课程</a>
+		                		</li>
+		                		<li>
+		                			<a class="J_menuItem" href="teacher_upload.jsp">上传课程资料</a>
+		                		</li>
+		                	</ul>
 		                </li>
 		                <li>
 		                	<a href="#">
