@@ -104,7 +104,7 @@
 		                			<a class="J_menuItem" href="teacher_submit_grade.jsp">提交学生课程成绩</a>
 		                		</li>
 		                		<li>
-		                			<a class="J_menuItem" href="admin_add_student.jsp">查看学生作业</a>
+		                			<a class="J_menuItem" href="teacher_check_homework_index.jsp">查看学生作业</a>
 		                		</li>
 		                	</ul>
 		                </li>
