@@ -51,25 +51,43 @@
                 },
                 dataType:"json",
                 success:function(data){
-                	$("#studentList").html("");
-                    $.each(data, function (index) {
-                    	var stuid = data[index].stuid;
-                        var studentname = data[index].name;
-                        var grade = data[index].grade;
-                        
-                        var str = (grade!=0?"disabled='disabled'":" ");
-
-                        tt = "<tr>"
-                        	+"<td class='text-center'>"+stuid+"</td>"
-                            +"<td class='text-center'>"+studentname+"</td>"
-                            +'<td class="text-center"><button onclick="jumpToHomework(\''+stuid+'\')" class="btn btn-primary demo4">查看作业</button></td>'
-                            +"</tr>";
-                        $("#studentList").append(tt);
-                    });
+                	dealStudentData(data);
                 }
 			});
 		}
-    </script>
+		
+		function searchStudent(teacherid,courseid,studentid){
+			$.ajax({
+				url:"/MIPS246/TeacherServlet",
+                type:"POST",
+                data:{
+                    method:"selectCourseSelectAndStudentNameWithId",
+                    teacherid:teacherid,
+                    courseid:courseid,
+                    studentid:studentid
+                },
+                dataType:"json",
+                success:function(data){
+                	dealStudentData(data);
+                }
+			});
+		}
+		
+		function dealStudentData(data) {
+			$("#studentList").html("");
+			$.each(data, function(index) {
+				var stuid = data[index].stuid;
+				var studentname = data[index].name;
+	
+				tt = "<tr>"
+					+ "<td class='text-center'>" + stuid + "</td>"
+					+ "<td class='text-center'>" + studentname + "</td>"
+					+ '<td class="text-center"><button onclick="jumpToHomework(\'' + stuid + '\')" class="btn btn-primary demo4">查看作业</button></td>'
+					+ "</tr>";
+				$("#studentList").append(tt);
+			});
+		}
+	</script>
     
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -79,6 +97,14 @@
         			loadStudentTable(teacherid,$("#selectList").val());
         		}
         	});
+        	
+        	$("#selectStudent").on("click",function(){
+        		var teacherid = '<%=session.getAttribute("userid")%>';
+				var studentid = $("#numberInput").val().trim();
+				var courseid = $("#selectList").val();
+				if(studentid!="") searchStudent(teacherid,courseid,studentid);
+				else loadStudentTable(teacherid,courseid);
+			});
     	});
     </script>
     
@@ -107,6 +133,15 @@
 			        				<option value="-1">选择课程</option>
 			        			</select>
 			        		</div>
+			        		<div class="col-sm-4"></div>
+			        		<div class="form-group">
+                                <div class="col-sm-3">
+                                    <input id="numberInput" class="form-control" type="text" placeholder="输入学生学号查找学生">
+                                </div>
+                            	<span class="input-group-btn">
+                                	<button id="selectStudent" class="btn btn btn-primary"> <i class="fa fa-search"></i> 查询</button>
+                             	</span>
+                             </div>
 			        	</div>
 			        	<div class="table-responsive" class="row">
 			        		<div class="col-sm-12">

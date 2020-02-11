@@ -10,6 +10,4 @@ file表中file_type表示文件类型，规定如下：
 	3 -> 讲义
 	
 目前teacher部分存在的问题
-	1.teacher_submit_grade.jsp可以考虑增加按学号搜索学生的功能
-	2.teacher_submit_grade.jsp是否能改成提交成绩后的刷新不改变当前课程
-	3.teacher_submit_grade.jsp的ajax仅对success做了处理，没有error的处理
+	1.teacher_submit_grade.jsp的ajax仅对success做了处理，没有error的处理

@@ -92,6 +92,30 @@ public class TeacherDAO extends BaseDAO{
 		return resultlist;
 	}
 	
+	public static JSONArray getCourseSelectAndStudentNameListWithId(String teacherid, String courseid, String studentid) throws SQLException, JSONException {
+		JSONArray resultlist = new JSONArray();
+    	String sql = "SELECT courseselect.grade,courseselect.studentid,student.name"
+    			+ " FROM courseselect,student"
+    			+ " where courseselect.teacherid = ? and courseselect.courseid = ? and courseselect.studentid = ? and courseselect.studentid = student.userid;";
+    	openConnection();
+		pstmt = getPStatement(sql);
+		
+		pstmt.setString(1, teacherid);
+		pstmt.setString(2, courseid);
+		pstmt.setString(3, studentid);
+		ResultSet result = pstmt.executeQuery();
+		while(result.next()){
+			JSONObject obj= new JSONObject ();
+			obj.put("stuid", result.getString("studentid"));
+			obj.put("name", result.getString("name"));
+			obj.put("grade", result.getInt("grade"));
+			resultlist.put(obj);
+		}
+		result.close();
+		closeConnect();
+		return resultlist;
+	}
+	
 	public static boolean updateGrade(String teacherid, String courseid, String studentid, int grade){
 		String sql = "UPDATE courseselect SET grade= ? WHERE teacherid = ? and courseid = ? and studentid = ?;";
 		openConnection();
