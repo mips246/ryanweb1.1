@@ -17,6 +17,16 @@
     <title>查看学生作业</title>
 	
 	<script type="text/javascript">
+		function getUrlParams(name){
+     		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     		var r = window.location.search.substr(1).match(reg);
+     		//if(r!=null) return unescape(r[2]); 
+     		if(r!=null) return decodeURI(r[2]);
+     		return null;
+		}
+	</script>
+	
+	<script type="text/javascript">
 		function loadInfoTable(){
 			var teacherid = '<%=session.getAttribute("userid")%>';
 			$.ajax({
@@ -35,7 +45,13 @@
                         tt = "<option value='"+courseid+"'>"+ courseid + " " + coursename+"</option>";
                         $("#selectList").append(tt);
                 	});
-                	loadStudentTable(teacherid,data[0].courseid);
+                	
+                	var lastcourseid = getUrlParams("courseid");
+                	if(lastcourseid==null) loadStudentTable(teacherid,data[0].courseid);
+                	else{
+                		$("#selectList").val(lastcourseid);
+                		loadStudentTable(teacherid,lastcourseid);
+                	}
                 }
 			});
 		}

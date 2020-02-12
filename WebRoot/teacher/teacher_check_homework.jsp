@@ -225,34 +225,39 @@
                 },
                 dataType:"json",
                 success:function(data){
-                	//var no = 0;
-                    $.each(data, function (index) {
-                    	
-                    	var fileno = data[index].fileno;
-                    	var fileurl=data[index].fileurl;
-                		var filename=data[index].filename;
-                    	var coursesection = data[index].coursesection;
-                        var createtime = data[index].createtime;
-                        var grade = data[index].grade;
-                        
-                        var str = (grade!=0?"disabled='disabled'":" ");
-
-                        tt = "<tr>"
-                        	+"<td class='text-center'><a href=\'"+fileurl+"\' download=\'"+filename+"\'>"+filename+"</a></td>"
-                        	+"<td class='text-center'>"+coursesection+"</td>"
-                            +"<td class='text-center'>"+createtime+"</td>"
-                            +"<td class='text-center'><input class='form-control' style='width:60px;margin:0 auto;padding:2px' id='gradeHW"+fileno+"' "+str+" type='number' value='"+grade+"' ></td>"
-                            //+"<td><input style='width:60px;margin:0 auto;padding:2px' id='"+fileurl+"' "+str+" type='number' value='"+grade+"' ></td>"
-                            //+"<td>"+grade+"</td>"
-                            +'<td class="text-center"><button onclick="updateHWGrade(\''+fileno+'\')" class="btn btn-primary demo4">提交成绩</button></td>'
-                            //+'<td><button onclick="updateHWGrade(\''+filename+'\',\''+no+'\')">提交成绩</button></td>'
-                            +"</tr>";
-                        $("#homeworkList").append(tt);
-                        //no += 1;
-                    });
+                    dealData(data);
                 }
             });
         }
+        
+        function dealData(data){
+        	$("#homeworkList").html("");
+        	//var no = 0;
+			$.each(data, function(index) {
+	
+				var fileno = data[index].fileno;
+				var fileurl = data[index].fileurl;
+				var filename = data[index].filename;
+				var coursesection = data[index].coursesection;
+				var createtime = data[index].createtime;
+				var grade = data[index].grade;
+	
+				var str = (grade != 0 ? "disabled='disabled'" : " ");
+	
+				tt = "<tr>"
+					+ "<td class='text-center'><a href=\'" + fileurl + "\' download=\'" + filename + "\'>" + filename + "</a></td>"
+					+ "<td class='text-center'>" + coursesection + "</td>"
+					+ "<td class='text-center'>" + createtime + "</td>"
+					+ "<td class='text-center'><input class='form-control' style='width:60px;margin:0 auto;padding:2px' id='gradeHW" + fileno + "' " + str + " type='number' value='" + grade + "' ></td>"
+					//+"<td><input style='width:60px;margin:0 auto;padding:2px' id='"+fileurl+"' "+str+" type='number' value='"+grade+"' ></td>"
+					//+"<td>"+grade+"</td>"
+					+ '<td class="text-center"><button onclick="updateHWGrade(\'' + fileno + '\')" class="btn btn-primary demo4">提交成绩</button></td>'
+					//+'<td><button onclick="updateHWGrade(\''+filename+'\',\''+no+'\')">提交成绩</button></td>'
+					+ "</tr>";
+				$("#homeworkList").append(tt);
+				//no += 1;
+			});
+		}
     </script>
     
     <script type="text/javascript">
@@ -296,13 +301,22 @@
                 	dataType:"json",
                 	success:function(data){
                 		alert("成绩提交成功");
-                		window.location.reload();
+                		//window.location.reload();
+                		loadInfoTable();
                 	}
         		});
         	}
     	}
     </script>
     
+    <script type="text/javascript">
+    	function back(){
+    		var courseid = getUrlParams("courseid");
+    		var url = "teacher_check_homework_index.jsp?courseid=" + courseid;
+    		//var url = "teacher_check_homework_index.jsp";
+    		window.location.href=url;
+    	}
+    </script>
     
 </head>
 <body class="gray-bg" onload="loadInfoTable()">
@@ -316,9 +330,7 @@
                         <div class="col-sm-3 m-b-xs"></div>
 			        	<div class="col-sm-7"></div>
                         <div class="input-group">
-                        	<a href="teacher_check_homework_index.jsp">
-                            	<button type="button" class="btn btn-primary btn-sm demo4">返回</button>
-                            </a>
+                            <button type="button" onclick="back()" class="btn btn-primary btn-sm demo4">返回</button>
                         </div>
                     </div>
 			        <div class="ibox-content">
