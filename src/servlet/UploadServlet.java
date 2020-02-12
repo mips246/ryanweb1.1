@@ -11,7 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -233,13 +234,14 @@ public class UploadServlet extends HttpServlet {
         } catch (Exception ex) {
             request.setAttribute("message", "错误信息: " +  ex.getMessage());
         }
-        getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
-        /*
-        if("teacher".equals(roletype)) {
-        	//getServletContext().getRequestDispatcher("/teacher/teacher_course_manage.jsp").forward(request, response);// 跳转
-        	getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
+
+        /*HttpSession session = ((HttpServletRequest) request).getSession();
+        if("teacher".equals(session.getAttribute("role"))) {
+        	response.sendRedirect("/teacher/teacher.jsp");
+        	//getServletContext().getRequestDispatcher("/teacher/teacher.jsp").forward(request, response);// 跳转
+        	//getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
         }
         */
-        //getServletContext().getRequestDispatcher("/homework1.jsp").forward(request, response);// 跳转
+        getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);// 跳转
     }
 }

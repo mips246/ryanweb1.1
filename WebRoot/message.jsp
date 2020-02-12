@@ -10,7 +10,15 @@
 	
 	<body>
     	<center>
-       		<h2>${message}</h2>
+       		<h2>${message}</h2><br>
+       		<h2>即将返回上级页面...</h2>
+       		<script language="JavaScript" type="text/javascript">
+		        function myRedirect(){
+		        	var role = '<%=session.getAttribute("role")%>';
+		        	if("teacher"==role) window.location = "teacher/teacher_upload.jsp";
+		        }
+		        setTimeout('myRedirect()', 3000);//第二个参数是时间，单位毫秒
+	  		</script>
     	</center>
 	</body>
 </html>
