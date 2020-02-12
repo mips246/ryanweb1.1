@@ -159,7 +159,9 @@ public class UploadServlet extends HttpServlet {
                         System.out.println(filePath);// 在控制台输出文件的上传路径
                         item.write(storeFile);// 保存文件到硬盘
                         Date time = new Date(storeFile.lastModified());
-                        String filetime = time.toString();//文件最后修改时间（创建时间）,create_time
+                        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                        String filetime = df.format(time);
+                        //String filetime = time.toString();//文件最后修改时间（创建时间）,create_time
                         request.setAttribute("message","文件上传成功!");
                         
                         reurl += File.separator + filename;//相对路径
