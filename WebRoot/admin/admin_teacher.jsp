@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -184,5 +184,138 @@
         </div>
     </div>
 </div>
+</body>
+</html> --%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<link href="../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+    
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>管理员 教师操作界面</title>
+
+	<script type="text/javascript">
+    	function teacherJumpToCourseSelect(teacherid,teachername){
+    		var url = "admin_teacher_course.jsp?teacherid=" + teacherid +"&teachername="+ teachername;
+    		//window.location.href=url;
+    		window.open(url);
+    	}
+    </script>
+
+    <script type="text/javascript">
+        function loadInfoTable(){
+            $.ajax({
+                url:"/MIPS246/AdminTeacherServlet",
+                type:"POST",
+                data:{
+                    method:"selectAllTeacher"
+                },
+                dataType:"json",
+                success:function(data){
+                    $.each(data, function (index) {
+                        var teacherid = data[index].teacherid;
+                        var teachername = data[index].teachername;
+                        var password = data[index].password;
+                        var description = data[index].description;
+                        tt = "<tr>"
+                            +"<td class='text-center'>"+teacherid+"</td>"
+                            +"<td class='text-center'>"+teachername+"</td>"
+                            +"<td class='text-center'>"+password+"</td>"
+                            +"<td class='text-center'>"+description+"</td>"
+                            //+"<td><button onclick='deleteTeacher("+teacherid+")'>删除</button></td>"
+                            +'<td class="text-center"><button class="btn btn-danger btn demo4" onclick="deleteTeacher(\''+teacherid+'\')">删除</button></td>'
+                            //下面两句都能拼出来，第一句是单引号，第二句是双引号(存在bug)
+                            //+"<td><button οnclick=\"teacherJumpToCourseSelect('"+teacherid+"','"+teachername+"')\">选课</button></td>"
+                            //+'<td><button onclick=teacherJumpToCourseSelect("'+teacherid+'","'+teachername+'")>选课</button></td>'
+                            +'<td class="text-center"><button class="btn btn-primary demo4" onclick="teacherJumpToCourseSelect(\''+teacherid+'\',\''+teachername+'\')">选课</button></td>'
+                            +"</tr>";
+                        $("#insertPlace").append(tt);
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function deleteTeacher(teacherid){
+            $.ajax({
+                url:"/MIPS246/AdminTeacherServlet",
+                type:"post",
+                dataType:"JSON",
+                data: {
+                    method:"deleteTeacher",
+                    teacherid:teacherid
+                },
+                success:function (data) {
+                    var deleteteacherid=teacherid;
+                    alert(deleteteacherid+"删除成功！");
+                    window.location.reload();
+                },
+                error:function (jqXHR,testStatus,errorThrown) {
+                    alert("删除失败！");
+                    window.location.reload();
+                }
+            })
+        }
+    </script>
+    
+</head>
+
+
+<body class="gray-bg" onload="loadInfoTable()">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+				    <div class="ibox-title">
+                        <h3>教师列表</h3>
+                        <div class="ibox-tools">
+                        </div>
+                    </div>
+                    
+				    <div class="ibox-content">
+				        <div class="table-responsive" class="row">
+				        	<div class="col-sm-12">
+					            <table class="table table-striped" class="text-center">
+					            	<thead>
+							            <tr>
+							                <th class="text-center">工号</th>
+							                <th class="text-center">姓名</th>
+							                <th class="text-center">密码</th>
+							                <th class="text-center">简介</th>
+							                <th class="text-center"> </th>
+							                <th class="text-center"> </th>
+							            </tr>
+							        </thead>
+					                <tbody id="insertPlace">
+					                </tbody>
+					            </table>
+				            </div>
+				        </div>
+				    </div>
+				    
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
+
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="../js/content.min.js?v=1.0.0"></script>
+    <script src="../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../js/plugins/validate/messages_zh.min.js"></script>
+    <script src="../js/demo/form-validate-demo.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
 </html>

@@ -11,3 +11,8 @@ file表中file_type表示文件类型，规定如下：
 	
 目前teacher部分存在的问题
 	1.teacher_submit_grade.jsp的ajax仅对success做了处理，没有error的处理
+对admin前端逻辑做了调整：
+	admin_add_course.jsp：添加课程
+	admin_course.jsp	：显示课程列表（含删除课程）
+目前admin部分存在的问题
+	添加课程时不对重复主键 （课程号）进行检查
