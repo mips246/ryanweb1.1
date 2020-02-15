@@ -83,11 +83,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="form-group">
-				        <input type='text' class="form-control" placeholder="Enter your account" name='userid' value=''/>
+				        <input type='text' class="form-control" placeholder="请输入您的账号" name='userid' value=''/>
 					</div>
 					
 					<div class="form-group">
-					    <input type='password' class="form-control" placeholder="Enter your password" name='userpass' value=''/>
+					    <input type='password' class="form-control" placeholder="请输入您的密码" name='userpass' value=''/>
 					</div>
 					
 					<div class="form-group">

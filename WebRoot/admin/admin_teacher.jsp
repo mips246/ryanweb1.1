@@ -208,8 +208,8 @@
 	<script type="text/javascript">
     	function teacherJumpToCourseSelect(teacherid,teachername){
     		var url = "admin_teacher_course.jsp?teacherid=" + teacherid +"&teachername="+ teachername;
-    		//window.location.href=url;
-    		window.open(url);
+    		window.location.href=url;
+    		//window.open(url);
     	}
     </script>
 
