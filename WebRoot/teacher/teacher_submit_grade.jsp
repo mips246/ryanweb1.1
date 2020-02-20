@@ -94,13 +94,18 @@
 				var grade = data[index].grade;
 	
 				var str = (grade != 0 ? "disabled='disabled'" : " ");
-	
+				
+				var buttonStr0 = '<td class="text-center"><button onclick="updateGrade(\'' + stuid + '\')" class="btn btn-primary demo4">提交成绩</button></td>';
+				var buttonStr1 = "<td class='text-center'><button class='btn btn-danger demo4' disabled='disabled'>已提交</button></td>";
+				var buttonStr  =  grade != 0 ? buttonStr1 :buttonStr0;
+					
 				tt = "<tr>"
 					+ "<td class='text-center'>" + stuid + "</td>"
 					+ "<td class='text-center'>" + studentname + "</td>"
 					//+"<td><input style='width:60px;margin:0 auto;padding:2px' name='gradeText' stuid='"+stuid+"' "+str+" type='number' value='"+grade+"' ></td>"
 					+ "<td class='text-center'><input class='form-control' style='width:60px;margin:0 auto;padding:2px' id='grade" + stuid + "' " + str + " type='number' value='" + grade + "' ></td>"
-					+ '<td class="text-center"><button onclick="updateGrade(\'' + stuid + '\')" class="btn btn-primary demo4">提交成绩</button></td>'
+					//+ '<td class="text-center"><button onclick="updateGrade(\'' + stuid + '\')" class="btn btn-primary demo4">提交成绩</button></td>'
+					+ buttonStr
 					+ "</tr>";
 				$("#studentList").append(tt);
 			});
