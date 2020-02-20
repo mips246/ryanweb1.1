@@ -179,11 +179,13 @@
             	else{
             		alert(msg[0]);
             	}*/
-            	document.location.replace('../logout.jsp');
+            	//document.location.replace('../logout.jsp');
+            	top.location.replace('../logout.jsp');
             },
             error:function(jqXHR, textStatus, errorThrown){
             	alert("error！");
-            	document.location.replace('../logout.jsp');
+            	//document.location.replace('../logout.jsp');
+            	top.location.replace('../logout.jsp');
             }
         });
     }
