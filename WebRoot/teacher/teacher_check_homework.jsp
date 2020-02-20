@@ -71,7 +71,11 @@
 				var grade = data[index].grade;
 	
 				var str = (grade != 0 ? "disabled='disabled'" : " ");
-	
+				
+				var buttonStr0 = '<td class="text-center"><button onclick="updateHWGrade(\'' + fileno + '\')" class="btn btn-primary demo4">提交成绩</button></td>';
+				var buttonStr1 = "<td class='text-center'><button class='btn btn-danger demo4' disabled='disabled'>已提交</button></td>";
+				var buttonStr  =  grade != 0 ? buttonStr1 :buttonStr0;
+				
 				tt = "<tr>"
 					+ "<td class='text-center'><a href=\'" + fileurl + "\' download=\'" + filename + "\'>" + filename + "</a></td>"
 					+ "<td class='text-center'>" + coursesection + "</td>"
@@ -79,7 +83,8 @@
 					+ "<td class='text-center'><input class='form-control' style='width:60px;margin:0 auto;padding:2px' id='gradeHW" + fileno + "' " + str + " type='number' value='" + grade + "' ></td>"
 					//+"<td><input style='width:60px;margin:0 auto;padding:2px' id='"+fileurl+"' "+str+" type='number' value='"+grade+"' ></td>"
 					//+"<td>"+grade+"</td>"
-					+ '<td class="text-center"><button onclick="updateHWGrade(\'' + fileno + '\')" class="btn btn-primary demo4">提交成绩</button></td>'
+					//+ '<td class="text-center"><button onclick="updateHWGrade(\'' + fileno + '\')" class="btn btn-primary demo4">提交成绩</button></td>'
+					+ buttonStr
 					//+'<td><button onclick="updateHWGrade(\''+filename+'\',\''+no+'\')">提交成绩</button></td>'
 					+ "</tr>";
 				$("#homeworkList").append(tt);
