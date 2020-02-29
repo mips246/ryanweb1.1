@@ -12,15 +12,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>My JSP 'uploadhomework.jsp' starting page</title>
     
 	<meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	  <link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	  <link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	  <link href="../css/animate.min.css" rel="stylesheet">
+	  <link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	  <link href="../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	  <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+	  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+	  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		function getUrlParams(name){
      		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");

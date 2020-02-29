@@ -1,12 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -125,61 +129,111 @@
         }
     </script>
 </head>
-<body onload="loadCourseTable()">
-<div class="container clearf">
-    <div class="top-nav clearf">
-        <div class="fl">
-            <div class="item">
-                <a href="student_main.jsp"><button type="button" class="btn btn-primary ">首页</button></a>
-            </div>
-            <div class="item">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">课程</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="student_select_course.jsp">选课</a>
-                    <a class="dropdown-item" href="student_course.jsp">上课</a>
+<body class="gray-bg" onload="loadCourseTable()">
+<%--<div class="container clearf">--%>
+<%--    --%>
+<%--    <div class="top-nav clearf">--%>
+<%--        <div class="fl">--%>
+<%--            <div class="item">--%>
+<%--                <a href="student_main.jsp"><button type="button" class="btn btn-primary ">首页</button></a>--%>
+<%--            </div>--%>
+<%--            <div class="item">--%>
+<%--                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">课程</button>--%>
+<%--                <div class="dropdown-menu">--%>
+<%--                    <a class="dropdown-item" href="student_select_course.jsp">选课</a>--%>
+<%--                    <a class="dropdown-item" href="student_course.jsp">上课</a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="item">--%>
+<%--                <a href="student_archive.jsp"><button type="button" class="btn btn-primary ">课程资料</button></a>--%>
+<%--            </div>--%>
+<%--            <div class="item">--%>
+<%--                <a href="student_homework.jsp"><button type="button" class="btn btn-primary ">作业</button></a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="fr">--%>
+<%--            <div class="item">--%>
+<%--                <!--<button type="button" class="btn btn-primary"><a href="logout.jsp">退出</a></button>只能a标签套button，button不能套a  -->--%>
+<%--                <a href="../logout.jsp"><button type="button" class="btn btn-primary ">退出</button></a>--%>
+<%--                <a href="info.jsp"><button type="button" class="btn btn-primary ">个人信息修改</button></a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--<div class="container clearf">--%>
+<%--    <div class="col-5">--%>
+<%--        <h3 align="center">课程列表</h3>--%>
+<%--        <table border="1" align="center">--%>
+<%--            <thead>--%>
+<%--            <tr>--%>
+<%--                <th>课程ID</th>--%>
+<%--                <th>课程名</th>--%>
+<%--                <!--<th>限选人数</th>--%>
+<%--                <th>已选人数</th>  -->--%>
+<%--                <th>授课教师</th>--%>
+<%--                <th>选课</th>--%>
+<%--            </tr>--%>
+<%--            </thead>--%>
+<%--            <tbody id="insertPlace">--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
+<%--    </div>--%>
+<%--    <div class="col-5">--%>
+<%--        <h3 align="center">已选列表</h3>--%>
+<%--        <table border="1" align="center">--%>
+<%--         	<tbody id="insertPlace2">--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>课程列表</h3>
+                    <div class="ibox-tools">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped text-center">
+                                <tbody id="insertPlace">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="item">
-                <a href="student_archive.jsp"><button type="button" class="btn btn-primary ">课程资料</button></a>
-            </div>
-            <div class="item">
-                <a href="student_homework.jsp"><button type="button" class="btn btn-primary ">作业</button></a>
-            </div>
         </div>
-        <div class="fr">
-            <div class="item">
-                <!--<button type="button" class="btn btn-primary"><a href="logout.jsp">退出</a></button>只能a标签套button，button不能套a  -->
-                <a href="../logout.jsp"><button type="button" class="btn btn-primary ">退出</button></a>
-                <a href="info.jsp"><button type="button" class="btn btn-primary ">个人信息修改</button></a>
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>已选列表</h3>
+                    <div class="ibox-tools">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped text-center">
+                                <tbody id="insertPlace2">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container clearf">
-    <div class="col-5">
-        <h3 align="center">课程列表</h3>
-        <table border="1" align="center">
-            <thead>
-            <tr>
-                <th>课程ID</th>
-                <th>课程名</th>
-                <!--<th>限选人数</th>
-                <th>已选人数</th>  -->
-                <th>授课教师</th>
-                <th>选课</th>
-            </tr>
-            </thead>
-            <tbody id="insertPlace">
-            </tbody>
-        </table>
-    </div>
-    <div class="col-5">
-        <h3 align="center">已选列表</h3>
-        <table border="1" align="center">
-         	<tbody id="insertPlace2">
-            </tbody>
-        </table>
-    </div>
-</div>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/content.min.js?v=1.0.0"></script>
+<script src="../js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../js/plugins/validate/messages_zh.min.js"></script>
+<script src="../js/demo/form-validate-demo.min.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
 </html>
